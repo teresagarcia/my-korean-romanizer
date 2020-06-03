@@ -73,8 +73,11 @@ class Romanizer(object):
     def romanize(self):
         _romanized = ""
         for char in self.text:
-            syl = Syllable(char)
-            _romanized += self.romanize_syllable(syl)
+            if(char.isspace() is False):
+                syl = Syllable(char)
+                _romanized += self.romanize_syllable(syl)
+            else:
+                _romanized += ' '
         return _romanized
 
     def romanize_syllable(self, syl):
@@ -102,6 +105,6 @@ class Romanizer(object):
             romanization = letter.get('all') if(letter.get('all') is not None) else letter.get('final')
         return romanization
 
-r = Romanizer("까")
+r = Romanizer("오빠 나빠")
 
 print(r.romanize())
