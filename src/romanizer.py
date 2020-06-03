@@ -1,8 +1,6 @@
 from jamo import h2j, j2hcj
-from syllable import Syllable
-
-syl = Syllable("삼")
-print(syl.initial)   
+from syllable import Syllable  
+import re
 
 vowels = {
     'ㅏ' : 'a',
@@ -45,11 +43,11 @@ consonants = {
     'ㅌ': {'all': 't'},
     'ㅍ': {'all': 'p'},
     'ㅎ': {'all': 'h'},
-    'ᄁ' : {'all': 'kk'},
-    'ᄄ' : {'all': 'tt'},
-    'ᄈ' : {'all': 'pp'},
-    'ᄍ' : {'all': 'jj'},
-    'ᄊ' : {'initial': 'ss', 'final': 't', 'pre_vocal': 'ss'},
+    'ㄲ' : {'all': 'kk'},
+    'ㄸ' : {'all': 'tt'},
+    'ㅃ' : {'all': 'pp'},
+    'ㅉ' : {'all': 'jj'},
+    'ㅆ' : {'initial': 'ss', 'final': 't', 'pre_vocal': 'ss'},
 }
 
 double_consonant_final = {
@@ -67,3 +65,43 @@ double_consonant_final = {
     'ㅆ' : ('ㅅ', 'ㅅ')
 }
 
+
+class Romanizer(object):
+    def __init__(self, text):
+        self.text = text
+
+    def romanize(self):
+        _romanized = ""
+        for char in self.text:
+            syl = Syllable(char)
+            _romanized += self.romanize_syllable(syl)
+        return _romanized
+
+    def romanize_syllable(self, syl):
+        initial_rom = self.get_initial_rom(syl)
+        medial_rom = self.get_medial_rom(syl)
+        final_rom = self.get_final_rom(syl)
+        romanized_syl = initial_rom + medial_rom + final_rom
+        return romanized_syl
+
+    def get_initial_rom(self, syl):
+        letter = consonants.get(syl.initial)
+        print(letter)
+        romanization = letter.get('all') if(letter.get('all') is not None) else letter.get('initial')
+        return romanization
+
+    def get_medial_rom(self, syl):
+        romanization = vowels.get(syl.medial)
+        return romanization
+
+    def get_final_rom(self, syl):
+        letter = consonants.get(syl.final)
+        romanization = ''
+        if(letter is not None):
+            print(letter)
+            romanization = letter.get('all') if(letter.get('all') is not None) else letter.get('final')
+        return romanization
+
+r = Romanizer("까")
+
+print(r.romanize())

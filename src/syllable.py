@@ -6,8 +6,8 @@ class Syllable(object):
         self.initial = ''
         self.medial = ''
         self.final = ''
-        if self.is_hangul(char):
-            self.separate(char)
+        # if self.is_hangul(char):
+        self.separate(char)
 
     def is_hangul(self, char):
         value = ord(char)
