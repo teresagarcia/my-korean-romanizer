@@ -32,22 +32,22 @@ consonants = {
     'ㄱ': {'initial': 'g', 'final': 'k'},
     'ㄷ': {'initial': 'd', 'final': 't'},
     'ㄹ': {'initial': 'r', 'final': 'l'},
-    'ㅁ': {'all': 'm'},
-    'ㄴ': {'all': 'n'},
+    'ㅁ': {'initial': 'm', 'final': 'm'},
+    'ㄴ': {'initial': 'n', 'final': 'n'},
     'ㅂ': {'initial': 'b', 'final': 'p'},
-    'ㅅ': {'initial': 's', 'final': 't', 'pre_vocal': 's', 'before_i': 'sh'},
+    'ㅅ': {'initial': 's', 'final': 't', 'pre_vowel': 's', 'before_i': 'sh'},
     'ㅇ': {'initial': '', 'final': 'ng'},
-    'ㅈ': {'initial': 'j', 'final': 't', 'pre_vocal': 'j'},
-    'ㅊ': {'initial': 'ch', 'final': 't', 'pre_vocal': 'ch'},
-    'ㅋ': {'all': 'k'},
-    'ㅌ': {'all': 't'},
-    'ㅍ': {'all': 'p'},
-    'ㅎ': {'all': 'h'},
-    'ㄲ' : {'all': 'kk'},
-    'ㄸ' : {'all': 'tt'},
-    'ㅃ' : {'all': 'pp'},
-    'ㅉ' : {'all': 'jj'},
-    'ㅆ' : {'initial': 'ss', 'final': 't', 'pre_vocal': 'ss'},
+    'ㅈ': {'initial': 'j', 'final': 't', 'pre_vowel': 'j'},
+    'ㅊ': {'initial': 'ch', 'final': 't', 'pre_vowel': 'ch'},
+    'ㅋ': {'initial': 'k', 'final': 'k'},
+    'ㅌ': {'initial': 't', 'final': 't', 'before_i': 'ch'},
+    'ㅍ': {'initial': 'p', 'final': 'p'},
+    'ㅎ': {'initial': 'h', 'final': 'h'},
+    'ㄲ' : {'initial': 'kk', 'final': 'kk'},
+    'ㄸ' : {'initial': 'tt', 'final': 'tt'},
+    'ㅃ' : {'initial': 'pp', 'final': 'pp'},
+    'ㅉ' : {'initial': 'jj', 'final': 't', 'pre_vowel': 'jj'},
+    'ㅆ' : {'initial': 'ss', 'final': 't', 'pre_vowel': 'ss'},
 }
 
 double_consonant_final = {
@@ -67,10 +67,11 @@ double_consonant_final = {
 
 
 class Romanizer(object):
-    def __init__(self, text):
-        self.text = text
+    def __init__(self):
+        self.text = ''
 
-    def romanize(self):
+    def romanize(self, text):
+        self.text = text
         _romanized = ""
         for char in self.text:
             if(char.isspace() is False):
@@ -89,8 +90,7 @@ class Romanizer(object):
 
     def get_initial_rom(self, syl):
         letter = consonants.get(syl.initial)
-        print(letter)
-        romanization = letter.get('all') if(letter.get('all') is not None) else letter.get('initial')
+        romanization = letter.get('initial')
         return romanization
 
     def get_medial_rom(self, syl):
@@ -102,9 +102,6 @@ class Romanizer(object):
         romanization = ''
         if(letter is not None):
             print(letter)
-            romanization = letter.get('all') if(letter.get('all') is not None) else letter.get('final')
+            romanization = letter.get('final')
         return romanization
 
-r = Romanizer("오빠 나빠")
-
-print(r.romanize())

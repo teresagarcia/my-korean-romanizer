@@ -6,16 +6,16 @@ class Syllable(object):
         self.initial = ''
         self.medial = ''
         self.final = ''
-        # if self.is_hangul(char):
-        self.separate(char)
+        if self.is_hangul():
+            self.separate(char)
 
-    def is_hangul(self, char):
-        value = ord(char)
-        return value >= 4352 and value <= 4607
+    def is_hangul(self):
+        value = ord(self.char)
+        return 0xAC00 <= value <= 0xD7A3
 
     def separate(self, char):
         result = list(j2hcj(h2j(char)))
         self.initial = result[0]
         self.medial = result[1]
-        self.final = result[2] if(result.__len__ == 2) else  ''
+        self.final = result[2] if(len(result) > 2) else  ''
         return result
