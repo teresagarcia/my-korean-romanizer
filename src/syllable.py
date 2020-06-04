@@ -16,3 +16,6 @@ class Syllable(object):
         self.medial = result[1]
         self.final = result[2] if(len(result) > 2) else  ''
         return result
+
+    def starts_with_vowel(self):
+        return self.initial == 'ㅇ'

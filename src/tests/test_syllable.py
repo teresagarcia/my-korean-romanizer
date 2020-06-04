@@ -17,4 +17,10 @@ def test_three_letter_syllable():
     assert s.medial == 'ㅏ'
     assert s.final == 'ㅇ'
 
+def test_starts_with_vowel():
+    s = Syllable('오')
+    assert s.starts_with_vowel() == True
+    s = Syllable('돈')
+    assert s.starts_with_vowel() == False
+
     

@@ -5,20 +5,28 @@ from hangul_romanization_equivalents import vowels, consonants, double_consonant
 
 class Romanizer(object):
     def __init__(self):
-        self.text = ''
+        self.text = ''  
+        self.current_syllable = ''
+        self.next_syllable = ''
 
 
     def romanize(self, text):
         self.text = text
         _romanized = ""
-        for char in self.text:
+        for idx, char in enumerate(self.text):
             if(self.is_hangul(char)):
-                syl = Syllable(char)
-                _romanized += self.romanize_syllable(syl)
+                self.current_syllable = Syllable(char)
+                self.next_syllable = self.get_next_syllable(idx)
+                _romanized += self.romanize_syllable(self.current_syllable)
             else:
                 _romanized += char
         return _romanized
 
+
+    def get_next_syllable(self, idx):
+        next_char = self.text[idx+1] if(len(self.text) > (idx+1)) else None
+        if(next_char and self.is_hangul(next_char)):
+            return Syllable(next_char)
 
     def is_hangul(self, char):
         value = ord(char)
@@ -49,7 +57,8 @@ class Romanizer(object):
         double_letter = double_consonant_final.get(syl.final)
         romanization = ''
         if(letter):
-            romanization = letter.get('final')
+            key = self.set_correct_key(letter)
+            romanization = letter.get(key)
         elif(double_letter):
             romanization = self.get_double_consonant_final(double_letter)
         return romanization
@@ -58,6 +67,21 @@ class Romanizer(object):
     def get_double_consonant_final(self, letter):
         romanization = ''
         for cons in letter:
-            romanization += consonants.get(cons).get('final')
+            consonant_entry = consonants.get(cons)
+            key = self.set_correct_key(consonant_entry)
+            romanization += consonant_entry.get(key)
         return romanization
+
+
+    def set_correct_key(self, letter):
+        if(self.changes_before_vowel(letter) and self.next_syllable and self.next_syllable.starts_with_vowel()):
+            key = 'pre_vowel'
+        else:
+            key = 'final'
+        return key
+
+
+    def changes_before_vowel(self, letter):
+        return letter.get('pre_vowel')
+
 
