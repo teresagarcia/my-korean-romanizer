@@ -13,4 +13,4 @@ def test_basic_romanization():
 
 
 def test_double_final_consonants():
-    pass
+    assert r.romanize('밝다') == 'balkda'

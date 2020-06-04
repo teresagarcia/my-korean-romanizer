@@ -1,70 +1,7 @@
 from jamo import h2j, j2hcj
 from syllable import Syllable  
 import re
-
-vowels = {
-    'ㅏ' : 'a',
-    'ㅓ' : 'eo',
-    'ㅗ' : 'o',
-    'ㅜ' : 'u',
-    'ㅡ' : 'eu',
-    'ㅣ' : 'i',
-    'ㅐ' : 'ae',
-    'ㅔ' : 'e',
-    'ㅚ' : 'oe',
-    'ㅟ' : 'wi',
-    
-  
-    'ㅑ' : 'ya',
-    'ㅕ' : 'yeo',
-    'ㅛ' : 'yo',
-    'ㅠ' : 'yu',
-    'ㅒ' : 'yae',
-    'ㅖ' : 'ye',
-    'ㅘ' : 'wa',
-    'ㅙ' : 'wae',
-    'ㅝ' : 'wo',
-    'ㅞ' : 'we',
-    'ㅢ' : 'ui', 
-}
-
-consonants = { 
-    'ㄱ': {'initial': 'g', 'final': 'k'},
-    'ㄷ': {'initial': 'd', 'final': 't'},
-    'ㄹ': {'initial': 'r', 'final': 'l'},
-    'ㅁ': {'initial': 'm', 'final': 'm'},
-    'ㄴ': {'initial': 'n', 'final': 'n'},
-    'ㅂ': {'initial': 'b', 'final': 'p'},
-    'ㅅ': {'initial': 's', 'final': 't', 'pre_vowel': 's', 'before_i': 'sh'},
-    'ㅇ': {'initial': '', 'final': 'ng'},
-    'ㅈ': {'initial': 'j', 'final': 't', 'pre_vowel': 'j'},
-    'ㅊ': {'initial': 'ch', 'final': 't', 'pre_vowel': 'ch'},
-    'ㅋ': {'initial': 'k', 'final': 'k'},
-    'ㅌ': {'initial': 't', 'final': 't', 'before_i': 'ch'},
-    'ㅍ': {'initial': 'p', 'final': 'p'},
-    'ㅎ': {'initial': 'h', 'final': 'h'},
-    'ㄲ' : {'initial': 'kk', 'final': 'kk'},
-    'ㄸ' : {'initial': 'tt', 'final': 'tt'},
-    'ㅃ' : {'initial': 'pp', 'final': 'pp'},
-    'ㅉ' : {'initial': 'jj', 'final': 't', 'pre_vowel': 'jj'},
-    'ㅆ' : {'initial': 'ss', 'final': 't', 'pre_vowel': 'ss'},
-}
-
-double_consonant_final = {
-    'ㄳ' : ('ㄱ', 'ㅅ'),
-    'ㄵ' : ('ᆫ', 'ㅈ'), 
-    'ᆭ' : ('ᆫ', 'ᇂ'),
-    'ㄺ' : ('ㄹ', 'ㄱ'), 
-    'ㄻ' : ('ㄹ', 'ㅁ'), 
-    'ㄼ' : ('ㄹ', 'ㅂ'), 
-    'ㄽ' : ('ㄹ', 'ㅅ'), 
-    'ㄾ' : ('ㄹ', 'ㅌ'), 
-    'ㄿ' : ('ㄹ', 'ㅍ'),
-    'ㅀ' : ('ㄹ', 'ᇂ'), 
-    'ㅄ' : ('ㅂ', 'ㅅ'), 
-    'ㅆ' : ('ㅅ', 'ㅅ')
-}
-
+from hangul_romanization_equivalents import vowels, consonants, double_consonant_final
 
 class Romanizer(object):
     def __init__(self):
@@ -99,9 +36,17 @@ class Romanizer(object):
 
     def get_final_rom(self, syl):
         letter = consonants.get(syl.final)
+        double_letter = double_consonant_final.get(syl.final)
         romanization = ''
-        if(letter is not None):
-            print(letter)
+        if(letter):
             romanization = letter.get('final')
+        elif(double_letter):
+            romanization = self.get_double_consonant_final(double_letter)
+        return romanization
+
+    def get_double_consonant_final(self, letter):
+        romanization = ''
+        for cons in letter:
+            romanization += consonants.get(cons).get('final')
         return romanization
 
