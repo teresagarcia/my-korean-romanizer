@@ -7,16 +7,23 @@ class Romanizer(object):
     def __init__(self):
         self.text = ''
 
+
     def romanize(self, text):
         self.text = text
         _romanized = ""
         for char in self.text:
-            if(char.isspace() is False):
+            if(self.is_hangul(char)):
                 syl = Syllable(char)
                 _romanized += self.romanize_syllable(syl)
             else:
-                _romanized += ' '
+                _romanized += char
         return _romanized
+
+
+    def is_hangul(self, char):
+        value = ord(char)
+        return 0xAC00 <= value <= 0xD7A3
+
 
     def romanize_syllable(self, syl):
         initial_rom = self.get_initial_rom(syl)
@@ -25,14 +32,17 @@ class Romanizer(object):
         romanized_syl = initial_rom + medial_rom + final_rom
         return romanized_syl
 
+
     def get_initial_rom(self, syl):
         letter = consonants.get(syl.initial)
         romanization = letter.get('initial')
         return romanization
 
+
     def get_medial_rom(self, syl):
         romanization = vowels.get(syl.medial)
         return romanization
+
 
     def get_final_rom(self, syl):
         letter = consonants.get(syl.final)
@@ -43,6 +53,7 @@ class Romanizer(object):
         elif(double_letter):
             romanization = self.get_double_consonant_final(double_letter)
         return romanization
+
 
     def get_double_consonant_final(self, letter):
         romanization = ''
