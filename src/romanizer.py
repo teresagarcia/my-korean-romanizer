@@ -43,7 +43,10 @@ class Romanizer(object):
 
     def get_initial_rom(self, syl):
         letter = consonants.get(syl.initial)
-        romanization = letter.get('initial')
+        if(self.current_syllable.initial_is_s() and self.current_syllable.medial_is_i()):
+            romanization = letter.get('before_i')
+        else:
+            romanization = letter.get('initial')
         return romanization
 
 
@@ -74,14 +77,20 @@ class Romanizer(object):
 
 
     def set_correct_key(self, letter):
-        if(self.changes_before_vowel(letter) and self.next_syllable and self.next_syllable.starts_with_vowel()):
-            key = 'pre_vowel'
-        else:
-            key = 'final'
+        key = 'final'
+        if(self.next_syllable):
+            if(self.next_syllable.starts_with_i() and self.changes_before_i(letter)):
+                key = 'before_i'
+            elif(self.next_syllable.starts_with_vowel() and self.changes_before_vowel(letter)):
+                key = 'pre_vowel'
         return key
 
 
     def changes_before_vowel(self, letter):
         return letter.get('pre_vowel')
+
+    
+    def changes_before_i(self, letter):
+        return letter.get('before_i')
 
 

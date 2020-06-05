@@ -25,7 +25,7 @@ vowels = {
 }
 
 consonants = { 
-    'ㄱ': {'initial': 'g', 'final': 'k'},
+    'ㄱ': {'initial': 'g', 'final': 'k', 'pre_vowel': 'g'},
     'ㄷ': {'initial': 'd', 'final': 't'},
     'ㄹ': {'initial': 'r', 'final': 'l', 'pre_vowel': 'r'},
     'ㅁ': {'initial': 'm', 'final': 'm'},

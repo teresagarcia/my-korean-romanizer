@@ -2,6 +2,7 @@ import sys
 sys.path.append("src") 
 import pytest
 from romanizer import Romanizer
+from hangul_romanization_equivalents import vowels, consonants, double_consonant_final
 
 r = Romanizer()
 
@@ -38,5 +39,6 @@ def test_s_and_t_change_before_i():
     assert r.romanize("보고 싶어") == "bogo shipeo"
     assert r.romanize("이 것이") == "i geoshi"
     assert r.romanize("같이") == "gachi"
+
 
 
