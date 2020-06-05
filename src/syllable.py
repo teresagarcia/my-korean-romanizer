@@ -32,3 +32,9 @@ class Syllable(object):
 
     def initial_is_s(self):
         return self.initial == 'ㅅ'
+
+
+    def initial_is_n(self):
+        return self.initial == 'ㄴ'
+
+

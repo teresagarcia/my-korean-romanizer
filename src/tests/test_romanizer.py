@@ -39,6 +39,13 @@ def test_s_and_t_change_before_i():
     assert r.romanize("보고 싶어") == "bogo shipeo"
     assert r.romanize("이 것이") == "i geoshi"
     assert r.romanize("같이") == "gachi"
+    assert r.romanize("같아") == "gata"
 
 
+def test_mn_instead_of_pn():
+    assert r.romanize("감사합니다") == "gamsahamnida"
+
+
+def test_ss_changes_before_s():
+    assert r.romanize("있습니다") == "isseumnida"
 

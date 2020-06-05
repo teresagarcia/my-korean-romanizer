@@ -25,16 +25,16 @@ vowels = {
 }
 
 consonants = { 
-    'ㄱ': {'initial': 'g', 'final': 'k', 'pre_vowel': 'g'},
+    'ㄱ': {'initial': 'g', 'final': 'k', 'before_vowel': 'g'},
     'ㄷ': {'initial': 'd', 'final': 't'},
-    'ㄹ': {'initial': 'r', 'final': 'l', 'pre_vowel': 'r'},
+    'ㄹ': {'initial': 'r', 'final': 'l', 'before_vowel': 'r'},
     'ㅁ': {'initial': 'm', 'final': 'm'},
     'ㄴ': {'initial': 'n', 'final': 'n'},
-    'ㅂ': {'initial': 'b', 'final': 'p'},
-    'ㅅ': {'initial': 's', 'final': 't', 'pre_vowel': 's', 'before_i': 'sh'},
+    'ㅂ': {'initial': 'b', 'final': 'p', 'before_n': 'm'},
+    'ㅅ': {'initial': 's', 'final': 't', 'before_vowel': 's', 'before_i': 'sh', 'before_s': 's'},
     'ㅇ': {'initial': '', 'final': 'ng'},
-    'ㅈ': {'initial': 'j', 'final': 't', 'pre_vowel': 'j'},
-    'ㅊ': {'initial': 'ch', 'final': 't', 'pre_vowel': 'ch'},
+    'ㅈ': {'initial': 'j', 'final': 't', 'before_vowel': 'j'},
+    'ㅊ': {'initial': 'ch', 'final': 't', 'before_vowel': 'ch'},
     'ㅋ': {'initial': 'k', 'final': 'k'},
     'ㅌ': {'initial': 't', 'final': 't', 'before_i': 'ch'},
     'ㅍ': {'initial': 'p', 'final': 'p'},
@@ -42,8 +42,8 @@ consonants = {
     'ㄲ' : {'initial': 'kk', 'final': 'kk'},
     'ㄸ' : {'initial': 'tt', 'final': 'tt'},
     'ㅃ' : {'initial': 'pp', 'final': 'pp'},
-    'ㅉ' : {'initial': 'jj', 'final': 't', 'pre_vowel': 'jj'},
-    'ㅆ' : {'initial': 'ss', 'final': 't', 'pre_vowel': 'ss'},
+    'ㅉ' : {'initial': 'jj', 'final': 't', 'before_vowel': 'jj'},
+    'ㅆ' : {'initial': 'ss', 'final': 't', 'before_vowel': 'ss', 'before_s': 's'},
 }
 
 double_consonant_final = {
