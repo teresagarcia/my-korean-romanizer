@@ -49,3 +49,12 @@ def test_mn_instead_of_pn():
 def test_ss_changes_before_s():
     assert r.romanize("있습니다") == "isseumnida"
 
+
+def test_transform_ps_ss():
+    assert r.romanize("없어") == "eopseo"
+    assert r.romanize("없다") == "eopta"
+    assert r.romanize("있으면") == "isseumyeon"
+    assert r.romanize("있다") == "itta"
+
+
+

@@ -22,7 +22,7 @@ class Syllable(object):
             "before_i": self.starts_with_i, 
             "before_vowel" : self.starts_with_vowel,
             "before_n" : self.initial_is_n,
-            "before_s" : self.initial_is_s   
+            "before_s" : self.initial_is_s,
         }
         equiv_key = None
         for key in functions_search:
@@ -50,5 +50,17 @@ class Syllable(object):
 
     def initial_is_n(self):
         return self.initial == 'ㄴ'
+
+
+    def initial_is_d(self):
+        return self.initial == 'ㄷ'
+
+    def final_is_ps(self):
+        return self.final == 'ㅄ'
+
+
+    def final_is_ss(self):
+        return self.final == 'ㅆ'
+
 
 

@@ -8,7 +8,7 @@ class Romanizer(object):
         self.text = ''  
         self.current_syllable = ''
         self.next_syllable = ''
-
+        self.rom_next_initial_as_final = False
 
     def romanize(self, text):
         self.text = text
@@ -18,6 +18,7 @@ class Romanizer(object):
                 self.current_syllable = Syllable(char)
                 self.next_syllable = self.get_next_syllable(idx)
                 _romanized += self.romanize_syllable(self.current_syllable)
+                self.set_rom_next_initial_as_final()
             else:
                 _romanized += char
         return _romanized
@@ -45,6 +46,9 @@ class Romanizer(object):
         letter = consonants.get(syl.initial)
         if(self.current_syllable.initial_is_s() and self.current_syllable.medial_is_i()):
             romanization = letter.get('before_i')
+        elif(self.rom_next_initial_as_final):
+            romanization = letter.get('final')
+            self.rom_next_initial_as_final = False
         else:
             romanization = letter.get('initial')
         return romanization
@@ -64,16 +68,26 @@ class Romanizer(object):
             romanization = letter.get(key)
         elif(double_letter):
             romanization = self.get_double_consonant_final(double_letter)
+        
         return romanization
 
 
-    def get_double_consonant_final(self, letter):
+    def get_double_consonant_final(self, double_letter):
         romanization = ''
-        for cons in letter:
-            consonant_entry = consonants.get(cons)
-            key = self.set_correct_key(consonant_entry)
-            romanization += consonant_entry.get(key)
+        double_cons_key = self.set_double_cons_key()
+        for one_char in double_letter.get(double_cons_key):
+            letter = consonants.get(one_char)
+            key = self.set_correct_key(letter)
+            romanization += letter.get(key)
         return romanization
+
+
+    def set_double_cons_key(self):
+        key = 'complete'
+        if(self.current_syllable.final_is_ps() and self.next_syllable.initial_is_d()):
+            key = 'reduced'
+            self.rom_next_initial_as_final = True
+        return key
 
 
     def set_correct_key(self, letter):
@@ -84,4 +98,8 @@ class Romanizer(object):
                 key = possible_key
         return key
 
+
+    def set_rom_next_initial_as_final(self):
+        next_initial_as_final = ((self.current_syllable.final_is_ps() or self.current_syllable.final_is_ss()) and self.next_syllable.initial_is_d())
+        self.rom_next_initial_as_final = next_initial_as_final
 

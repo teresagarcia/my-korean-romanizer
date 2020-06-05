@@ -1,2 +1,2 @@
 # my-korean-romanizer
-Custom Korean romanizer based on Revised Romanization of Korean
+Custom Korean romanizer based on the Revised Romanization of Korean.
