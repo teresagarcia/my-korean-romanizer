@@ -17,6 +17,20 @@ class Syllable(object):
         self.final = result[2] if(len(result) > 2) else  ''
         return result
 
+    def search_key(self):
+        functions_search = { 
+            "before_i": self.starts_with_i, 
+            "before_vowel" : self.starts_with_vowel,
+            "before_n" : self.initial_is_n,
+            "before_s" : self.initial_is_s   
+        }
+        equiv_key = None
+        for key in functions_search:
+            if(functions_search[key]()):
+                equiv_key = key
+                break
+        return equiv_key
+
 
     def starts_with_vowel(self):
         return self.initial == 'ㅇ'

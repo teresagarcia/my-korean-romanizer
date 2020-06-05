@@ -79,31 +79,9 @@ class Romanizer(object):
     def set_correct_key(self, letter):
         key = 'final'
         if(self.next_syllable):
-            if(self.next_syllable.starts_with_i() and self.changes_before_i(letter)):
-                key = 'before_i'
-            elif(self.next_syllable.starts_with_vowel() and self.changes_before_vowel(letter)):
-                key = 'before_vowel'
-            elif(self.next_syllable.initial_is_n() and self.changes_before_n(letter)):
-                key = 'before_n'
-            elif(self.next_syllable.initial_is_s() and self.changes_before_s(letter)):
-                key = 'before_s'
+            possible_key = self.next_syllable.search_key()
+            if(letter.get(possible_key)):
+                key = possible_key
         return key
-
-
-    def changes_before_vowel(self, letter):
-        return letter.get('before_vowel')
-
-    
-    def changes_before_i(self, letter):
-        return letter.get('before_i')
-
-
-    def changes_before_n(self, letter):
-        return letter.get('before_n')
-
-
-    def changes_before_s(self, letter):
-        return letter.get('before_s')
-
 
 
