@@ -118,4 +118,6 @@ class Romanizer(object):
 
 
     def change_initial_to_final(self):
-        return ((self.current_syllable.final_is_ps() or self.current_syllable.final_is_ss()) and self.next_syllable.initial_is_d())
+        is_case_ps_ss = ((self.current_syllable.final_is_ps() or self.current_syllable.final_is_ss()) and self.next_syllable.initial_is_d())
+        is_case_hk = self.current_syllable.final_is_h() and self.next_syllable.initial_is_g()
+        return is_case_hk or is_case_ps_ss

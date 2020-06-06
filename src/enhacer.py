@@ -22,4 +22,10 @@ class Enhacer(object):
 
 
     def add_apostrophe(self):
-        pass
+        replacements = [
+            ("aeeo", "ae'eo"),
+            ("eoo", "eo'o"),
+            ("eoe", "eo'e")
+        ]
+        for old, new in replacements:
+            self.text = re.sub(old, new, self.text)

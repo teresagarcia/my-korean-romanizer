@@ -62,4 +62,11 @@ class Syllable(object):
         return self.final == 'ㅆ'
 
 
+    def final_is_h(self):
+        return self.final == 'ㅎ'
+
+    
+    def initial_is_g(self):
+        return self.initial == 'ㄱ'
+
 

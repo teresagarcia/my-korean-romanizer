@@ -7,7 +7,7 @@ from hangul_romanization_equivalents import vowels, consonants, double_consonant
 r = Romanizer()
 
 def test_basic_romanization():
-    assert r.romanize("안녕") == "annyeong"
+    assert r.romanize("안녕하세요") == "annyeonghaseyo"
     assert r.romanize("바보") == "babo"
     assert r.romanize("깜짝") == "kkamjjak"
     assert r.romanize("영원에 남겨진 나를 찾는가") == "yeongwone namgyeojin nareul chatneunga"
@@ -33,6 +33,7 @@ def test_double_final_consonants():
 def test_next_syllable_starts_with_vowel():
     assert r.romanize("있어") == "isseo"
     assert r.romanize("잊어줘") == "ijeojwo"
+    assert r.romanize("잃어") == "irheo"
 
 
 def test_s_and_t_change_before_i():
@@ -41,7 +42,6 @@ def test_s_and_t_change_before_i():
     assert r.romanize("같이") == "gachi"
     assert r.romanize("같아") == "gata"
     assert r.romanize("이 것 아니야") == "i geot aniya"
-
 
 
 def test_mn_instead_of_pn():
@@ -64,5 +64,10 @@ def test_enhacement():
     assert r.romanize("일년 후") == "illyeon hu"
     assert r.romanize("대답해 줄래") == "daedaphae jullae"  
     assert r.romanize("마지막이 찬란한 노을처럼") == "majimagi challanhan noeulcheoreom"
+    assert r.romanize("Oh 네가 나를 부를 때 깨어나") == "Oh nega nareul bureul ttae kkae'eona"
+
+
+def test_multiline():
+    assert r.romanize("어떡해 어쩌면 좋아 \n 내가 이렇게 아픈데") == "eotteokhae eojjeomyeon joha \n naega ireohke apeunde"
 
 

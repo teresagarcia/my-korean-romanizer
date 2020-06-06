@@ -19,3 +19,4 @@ def test_substitute_with_gn():
 
 def test_add_apostrophe():
     assert e.enhace_romanization("kaeeona") == "kae'eona"
+
