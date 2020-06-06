@@ -40,6 +40,8 @@ def test_s_and_t_change_before_i():
     assert r.romanize("이 것이") == "i geoshi"
     assert r.romanize("같이") == "gachi"
     assert r.romanize("같아") == "gata"
+    assert r.romanize("이 것 아니야") == "i geot aniya"
+
 
 
 def test_mn_instead_of_pn():
@@ -55,6 +57,7 @@ def test_transform_ps_ss():
     assert r.romanize("없다") == "eopta"
     assert r.romanize("있으면") == "isseumyeon"
     assert r.romanize("있다") == "itta"
+    assert r.romanize("없나요") == "eomnayo"
 
 
 

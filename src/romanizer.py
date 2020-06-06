@@ -84,7 +84,7 @@ class Romanizer(object):
 
     def set_double_cons_key(self):
         key = 'complete'
-        if(self.current_syllable.final_is_ps() and self.next_syllable.initial_is_d()):
+        if(self.change_to_reduced()):
             key = 'reduced'
             self.rom_next_initial_as_final = True
         return key
@@ -100,6 +100,12 @@ class Romanizer(object):
 
 
     def set_rom_next_initial_as_final(self):
-        next_initial_as_final = ((self.current_syllable.final_is_ps() or self.current_syllable.final_is_ss()) and self.next_syllable.initial_is_d())
-        self.rom_next_initial_as_final = next_initial_as_final
+        self.rom_next_initial_as_final = self.change_initial_to_final()
 
+
+    def change_to_reduced(self):
+        return (self.current_syllable.final_is_ps() and not self.next_syllable.starts_with_vowel())
+
+
+    def change_initial_to_final(self):
+        return ((self.current_syllable.final_is_ps() or self.current_syllable.final_is_ss()) and self.next_syllable.initial_is_d())
