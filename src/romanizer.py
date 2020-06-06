@@ -1,6 +1,5 @@
-from jamo import h2j, j2hcj
 from syllable import Syllable  
-import re
+from enhacer import Enhacer  
 from hangul_romanization_equivalents import vowels, consonants, double_consonant_final
 
 class Romanizer(object):
@@ -10,17 +9,26 @@ class Romanizer(object):
         self.next_syllable = ''
         self.rom_next_initial_as_final = False
 
+
     def romanize(self, text):
         self.text = text
         _romanized = ""
+        tmp_romanized = ""
+        _all_romanized = ""
+        enhacer = Enhacer()
         for idx, char in enumerate(self.text):
             if(self.is_hangul(char)):
                 self.current_syllable = Syllable(char)
                 self.next_syllable = self.get_next_syllable(idx)
-                _romanized += self.romanize_syllable(self.current_syllable)
+                tmp_romanized += self.romanize_syllable(self.current_syllable)
                 self.set_rom_next_initial_as_final()
             else:
-                _romanized += char
+                tmp_romanized = enhacer.enhace_romanization(tmp_romanized)
+                _all_romanized += tmp_romanized + char
+                tmp_romanized = ""
+        tmp_romanized = enhacer.enhace_romanization(tmp_romanized)
+        _all_romanized += tmp_romanized
+        _romanized = tmp_romanized if not (_all_romanized) else _all_romanized
         return _romanized
 
 
@@ -28,6 +36,7 @@ class Romanizer(object):
         next_char = self.text[idx+1] if(len(self.text) > (idx+1)) else None
         if(next_char and self.is_hangul(next_char)):
             return Syllable(next_char)
+
 
     def is_hangul(self, char):
         value = ord(char)
@@ -68,7 +77,6 @@ class Romanizer(object):
             romanization = letter.get(key)
         elif(double_letter):
             romanization = self.get_double_consonant_final(double_letter)
-        
         return romanization
 
 
@@ -93,9 +101,11 @@ class Romanizer(object):
     def set_correct_key(self, letter):
         key = 'final'
         if(self.next_syllable):
-            possible_key = self.next_syllable.search_key()
-            if(letter.get(possible_key)):
-                key = possible_key
+            possible_keys = self.next_syllable.search_key()
+            for possible_key in possible_keys:
+                if(letter.get(possible_key)):
+                    key = possible_key
+                    break
         return key
 
 

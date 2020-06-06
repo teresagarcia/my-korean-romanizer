@@ -24,11 +24,10 @@ class Syllable(object):
             "before_n" : self.initial_is_n,
             "before_s" : self.initial_is_s,
         }
-        equiv_key = None
+        equiv_key = []
         for key in functions_search:
             if(functions_search[key]()):
-                equiv_key = key
-                break
+                equiv_key.append(key)
         return equiv_key
 
 

@@ -60,4 +60,9 @@ def test_transform_ps_ss():
     assert r.romanize("없나요") == "eomnayo"
 
 
+def test_enhacement():
+    assert r.romanize("일년 후") == "illyeon hu"
+    assert r.romanize("대답해 줄래") == "daedaphae jullae"  
+    assert r.romanize("마지막이 찬란한 노을처럼") == "majimagi challanhan noeulcheoreom"
+
 
