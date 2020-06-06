@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-sys.path.append('src') 
+sys.path.append('my-korean-romanizer') 
 import pytest
 from syllable import Syllable
 
