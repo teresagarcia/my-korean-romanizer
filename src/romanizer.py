@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from syllable import Syllable  
 from enhacer import Enhacer  
 from hangul_romanization_equivalents import vowels, consonants, double_consonant_final
@@ -12,9 +14,9 @@ class Romanizer(object):
 
     def romanize(self, text):
         self.text = text
-        _romanized = ""
+        romanized = ""
         tmp_romanized = ""
-        _all_romanized = ""
+        all_romanized = ""
         enhacer = Enhacer()
         for idx, char in enumerate(self.text):
             if(self.is_hangul(char)):
@@ -24,12 +26,12 @@ class Romanizer(object):
                 self.set_rom_next_initial_as_final()
             else:
                 tmp_romanized = enhacer.enhace_romanization(tmp_romanized)
-                _all_romanized += tmp_romanized + char
+                all_romanized += tmp_romanized + char
                 tmp_romanized = ""
         tmp_romanized = enhacer.enhace_romanization(tmp_romanized)
-        _all_romanized += tmp_romanized
-        _romanized = tmp_romanized if not (_all_romanized) else _all_romanized
-        return _romanized
+        all_romanized += tmp_romanized
+        romanized = tmp_romanized if not (all_romanized) else all_romanized
+        return romanized
 
 
     def get_next_syllable(self, idx):

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 vowels = {
     'ㅏ' : 'a',
     'ㅓ' : 'eo',
