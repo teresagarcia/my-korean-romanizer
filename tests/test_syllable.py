@@ -2,8 +2,7 @@
 
 import sys
 import pytest
-sys.path.append("mykoreanromanizer") 
-from syllable import Syllable
+from mykoreanromanizer.syllable import Syllable
 
 
 def test_two_letter_syllable():
