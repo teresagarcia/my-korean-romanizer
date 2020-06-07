@@ -1,7 +1,7 @@
 from distutils.core import setup
 setup(
-  name = 'my-korean-romanizer',         
-  packages = ['my-korean-romanizer'],   
+  name = 'mykoreanromanizer',         
+  packages = ['mykoreanromanizer'],   
   version = '0.1',     
   license='MIT',      
   description = 'Custom Korean romanizer',   

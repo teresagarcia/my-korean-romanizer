@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-sys.path.append("src") 
+sys.path.append("mykoreanromanizer") 
 import pytest
 from romanizer import Romanizer
 from hangul_romanization_equivalents import vowels, consonants, double_consonant_final
