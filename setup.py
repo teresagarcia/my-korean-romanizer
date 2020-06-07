@@ -2,13 +2,13 @@ from distutils.core import setup
 setup(
   name = 'mykoreanromanizer',         
   packages = ['mykoreanromanizer'],   
-  version = '0.1',     
+  version = '0.1.1',     
   license='MIT',      
   description = 'Custom Korean romanizer',   
   author = 'Teresa García',                   
   author_email = 'teresagar181@gmail.com',    
   url = 'https://github.com/teresagarcia/my-korean-romanizer',   
-  download_url = 'https://github.com/teresagarcia/my-korean-romanizer/archive/v_01.tar.gz',    
+  download_url = 'https://github.com/teresagarcia/my-korean-romanizer/archive/v0.1.tar.gz',    
   keywords = ['Korean', 'Romanizer'],   
   install_requires=[            
           'jamo'
