@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from syllable import Syllable  
-from enhacer import Enhacer  
-from hangul_romanization_equivalents import vowels, consonants, double_consonant_final
+from .syllable import Syllable  
+from .enhacer import Enhacer  
+from .hangul_romanization_equivalents import vowels, consonants, double_consonant_final
 
 class Romanizer(object):
     def __init__(self):

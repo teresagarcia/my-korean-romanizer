@@ -1,26 +1,22 @@
-from distutils.core import setup
-setup(
-  name = 'mykoreanromanizer',         
-  packages = ['mykoreanromanizer'],   
-  version = '0.1.2',     
-  license='MIT',      
-  description = 'Custom Korean romanizer',   
-  author = 'Teresa García',                   
-  author_email = 'teresagar181@gmail.com',    
-  url = 'https://github.com/teresagarcia/my-korean-romanizer',   
-  download_url = 'https://github.com/teresagarcia/my-korean-romanizer/archive/v0.1.1.tar.gz',    
-  keywords = ['Korean', 'Romanizer'],   
-  install_requires=[            
-          'jamo'
-      ],
-  classifiers=[
-    'Development Status :: 4 - Beta',     
-    'Intended Audience :: Developers',      
-    'Topic :: Software Development :: Build Tools',
-    'License :: OSI Approved :: MIT License',   
-    'Programming Language :: Python :: 3',    
-    'Programming Language :: Python :: 3.6',
-    'Programming Language :: Python :: 3.7',
-    'Programming Language :: Python :: 3.8',
-  ],
+import setuptools
+
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
+    name="mykoreanromanizer", 
+    version="0.1.5",
+    author="Teresa Garcia",
+    author_email="teresagar181@gmail.com",
+    description="Custom Korean romanizer",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/teresagarcia/my-korean-romanizer",
+    packages=setuptools.find_packages(),
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    python_requires='>=3.6',
 )
