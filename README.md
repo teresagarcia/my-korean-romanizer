@@ -11,6 +11,7 @@ pip install mykoreanromanizer
 
 ## Usage
 ```python
+from mykoreanromanizer import Romanizer
 
 r = Romanizer()
 
