@@ -1,5 +1,5 @@
 # My Korean Romanizer
-Custom Korean romanizer based on the Revised Romanization of Korean.
+Korean romanizer based on the Revised Romanization of Korean.
 
 ## Installation
 
