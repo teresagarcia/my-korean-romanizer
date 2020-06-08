@@ -43,6 +43,7 @@ def test_s_and_t_change_before_i():
     assert r.romanize("같이") == "gachi"
     assert r.romanize("같아") == "gata"
     assert r.romanize("이 것 아니야") == "i geot aniya"
+    assert r.romanize("않아") == "anha"
 
 
 def test_mn_instead_of_pn():

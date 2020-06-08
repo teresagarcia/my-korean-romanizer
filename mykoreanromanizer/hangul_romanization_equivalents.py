@@ -51,7 +51,7 @@ consonants = {
 double_consonant_final = {
     'ㄳ' : {'complete' : ['ㄱ', 'ㅅ'], 'reduced' : 'ㄱ'},
     'ㄵ' : {'complete' : ['ㄴ', 'ㅈ'], 'reduced' : 'ㄴ'},
-    'ᆭ' : {'complete' : ['ㄴ', 'ㅎ'], 'reduced' : 'ㄴ'},
+    'ㄶ' : {'complete' : ['ㄴ', 'ㅎ'], 'reduced' : 'ㄴ'},
     'ㄺ' : {'complete' : ['ㄹ', 'ㄱ'], 'reduced' : 'ㄹ'},
     'ㄻ' : {'complete' : ['ㄹ', 'ㅁ'], 'reduced' : 'ㄹ'},
     'ㄼ' : {'complete' : ['ㄹ', 'ㅂ'], 'reduced' : 'ㄹ'},
