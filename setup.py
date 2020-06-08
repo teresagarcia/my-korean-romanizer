@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="mykoreanromanizer", 
-    version="0.1.5",
+    version="0.1.6",
     author="Teresa Garcia",
     author_email="teresagar181@gmail.com",
-    description="Custom Korean romanizer",
+    description="Korean romanizer based on the Revised Romanization of Korean",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/teresagarcia/my-korean-romanizer",
