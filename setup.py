@@ -5,13 +5,17 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="mykoreanromanizer", 
-    version="0.1.6",
+    version="0.1.7",
     author="Teresa Garcia",
     author_email="teresagar181@gmail.com",
     description="Korean romanizer based on the Revised Romanization of Korean",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/teresagarcia/my-korean-romanizer",
+    keywords = ['Korean', 'Romanizer'],  
+    install_requires=[
+        'jamo'
+    ],
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
