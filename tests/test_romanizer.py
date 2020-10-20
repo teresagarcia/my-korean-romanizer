@@ -72,4 +72,6 @@ def test_enhacement():
 def test_multiline():
     assert r.romanize("어떡해 어쩌면 좋아 \n 내가 이렇게 아픈데") == "eotteokhae eojjeomyeon joha \n naega ireohke apeunde"
 
-
+def test_j_ch_r_before_h():
+    assert r.romanize("잊혀") == "ijhyeo"
+    assert r.romanize("잃어") == "irheo"
