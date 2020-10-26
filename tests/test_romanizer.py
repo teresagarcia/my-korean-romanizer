@@ -46,6 +46,10 @@ def test_s_and_t_change_before_i():
     assert r.romanize("않아") == "anha"
 
 
+def test_s_before_wi():
+    assert r.romanize("쉬다") == "shwida"
+
+
 def test_mn_instead_of_pn():
     assert r.romanize("감사합니다") == "gamsahamnida"
 

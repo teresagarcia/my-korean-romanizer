@@ -55,7 +55,7 @@ class Romanizer(object):
 
     def get_initial_rom(self, syl):
         letter = consonants.get(syl.initial)
-        if(self.current_syllable.initial_is_s() and self.current_syllable.medial_is_i()):
+        if(self.current_syllable.initial_is_s() and self.current_syllable.medial_is_i_or_wi()):
             romanization = letter.get('before_i')
         elif(self.rom_next_initial_as_final):
             romanization = letter.get('final')
