@@ -32,7 +32,7 @@ consonants = {
     'ㄹ': {'initial': 'r', 'final': 'l', 'before_vowel': 'r', 'before_h' : 'r'},
     'ㅁ': {'initial': 'm', 'final': 'm'},
     'ㄴ': {'initial': 'n', 'final': 'n'},
-    'ㅂ': {'initial': 'b', 'final': 'p', 'before_n': 'm'},
+    'ㅂ': {'initial': 'b', 'final': 'p', 'before_n': 'm', 'before_vowel' : 'b'},
     'ㅅ': {'initial': 's', 'final': 't', 'before_vowel': 's', 'before_i': 'sh', 'before_s': 's'},
     'ㅇ': {'initial': '', 'final': 'ng'},
     'ㅈ': {'initial': 'j', 'final': 't', 'before_vowel': 'j', 'before_h' : 'j'},

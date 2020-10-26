@@ -35,7 +35,7 @@ def test_next_syllable_starts_with_vowel():
     assert r.romanize("있어") == "isseo"
     assert r.romanize("잊어줘") == "ijeojwo"
     assert r.romanize("잃어") == "irheo"
-
+    assert r.romanize("모습이") == "moseubi"
 
 def test_s_and_t_change_before_i():
     assert r.romanize("보고 싶어") == "bogo shipeo"
@@ -55,7 +55,7 @@ def test_ss_changes_before_s():
 
 
 def test_transform_ps_ss():
-    assert r.romanize("없어") == "eopseo"
+    assert r.romanize("없어") == "eobseo"
     assert r.romanize("없다") == "eopta"
     assert r.romanize("있으면") == "isseumyeon"
     assert r.romanize("있다") == "itta"
@@ -71,6 +71,7 @@ def test_enhacement():
 
 def test_multiline():
     assert r.romanize("어떡해 어쩌면 좋아 \n 내가 이렇게 아픈데") == "eotteokhae eojjeomyeon joha \n naega ireohke apeunde"
+
 
 def test_j_ch_r_before_h():
     assert r.romanize("잊혀") == "ijhyeo"
