@@ -75,3 +75,4 @@ def test_multiline():
 def test_j_ch_r_before_h():
     assert r.romanize("잊혀") == "ijhyeo"
     assert r.romanize("잃어") == "irheo"
+    assert r.romanize("잊어요") == "ijeoyo"

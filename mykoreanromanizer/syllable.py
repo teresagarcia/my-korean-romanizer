@@ -25,6 +25,7 @@ class Syllable(object):
             "before_vowel" : self.starts_with_vowel,
             "before_n" : self.initial_is_n,
             "before_s" : self.initial_is_s,
+            "before_h" : self.initial_is_h
         }
         equiv_key = []
         for key in functions_search:
@@ -71,4 +72,5 @@ class Syllable(object):
     def initial_is_g(self):
         return self.initial == 'ㄱ'
 
-
+    def initial_is_h(self):
+        return self.initial == 'ㅎ'
