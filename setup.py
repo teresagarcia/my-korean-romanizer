@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="mykoreanromanizer", 
-    version="0.1.8",
+    version="1.0.0",
     author="Teresa Garcia",
     author_email="teresagar181@gmail.com",
     description="Korean romanizer based on the Revised Romanization of Korean",
