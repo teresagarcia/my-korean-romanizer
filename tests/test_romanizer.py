@@ -36,6 +36,8 @@ def test_next_syllable_starts_with_vowel():
     assert r.romanize("잊어줘") == "ijeojwo"
     assert r.romanize("잃어") == "irheo"
     assert r.romanize("모습이") == "moseubi"
+    assert r.romanize("믿었어") == "mideosseo"
+
 
 def test_s_and_t_change_before_i():
     assert r.romanize("보고 싶어") == "bogo shipeo"
